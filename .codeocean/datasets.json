@@ -1,0 +1,9 @@
+{
+	"version": 1,
+	"attached_datasets": [
+		{
+			"id": "4aaa1388-7f90-4efb-8a00-90c055a44555",
+			"mount": "FOS_model_210815"
+		}
+	]
+}
