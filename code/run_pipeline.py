@@ -170,6 +170,7 @@ def run():
         print(f"varr vol level 3 shape: {arr.shape}")
 
         data = arr[::2, ::2, ::2]
+        print(f"99%ile of arr: {np.percentile(arr,99)}")
         data_filtered = data[data < (data.max() / 10)]
         del data
 
