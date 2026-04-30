@@ -167,6 +167,7 @@ def run():
         store = s3fs.S3Map(root=zarr_file, s3=fs, check=False)
         zarr_vol = zarr.open(store, mode='r')
         arr = zarr_vol["3"]
+        print(f"varr vol level 3 shape: {arr.shape}")
 
         data = arr[::2, ::2, ::2]
         data_filtered = data[data < (data.max() / 10)]
