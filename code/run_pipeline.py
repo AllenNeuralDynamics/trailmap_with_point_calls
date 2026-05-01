@@ -170,14 +170,14 @@ def run():
         print(f"varr vol level 3 shape: {arr.shape}")
 
         data = arr[::2, ::2, ::2]
-        # data_filtered = data[data < (data.max() / 10)]
-        data_filtered = data[data > 0]
+        data_filtered = data[data < (data.max() / 10)]
         del data
 
         counts, bins = np.histogram(data_filtered, bins=200)
         smooth = gaussian_filter1d(counts, 3)
         valley_idx, _ = find_peaks(-smooth)
-        valley_pos = bins[valley_idx[0]]
+        # valley_pos = bins[valley_idx[0]]
+        valley_pos = 1
 
         print(f"Threshold: {valley_pos}")
 
