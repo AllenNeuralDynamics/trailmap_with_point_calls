@@ -170,7 +170,8 @@ def run():
         print(f"varr vol level 3 shape: {arr.shape}")
 
         data = arr[::2, ::2, ::2]
-        data_filtered = data[data < (data.max() / 10)]
+        # data_filtered = data[data < (data.max() / 10)]
+        data_filtered = data[data > 0]
         del data
 
         counts, bins = np.histogram(data_filtered, bins=200)
