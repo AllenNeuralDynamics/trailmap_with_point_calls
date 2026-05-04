@@ -164,18 +164,18 @@ def run():
         # -------------------------------------------------
         # Step 1: load volume and build threshold
         # -------------------------------------------------
-        store = s3fs.S3Map(root=zarr_file, s3=fs, check=False)
-        zarr_vol = zarr.open(store, mode='r')
-        arr = zarr_vol["3"]
-        print(f"varr vol level 3 shape: {arr.shape}")
+        # store = s3fs.S3Map(root=zarr_file, s3=fs, check=False)
+        # zarr_vol = zarr.open(store, mode='r')
+        # arr = zarr_vol["3"]
+        # print(f"varr vol level 3 shape: {arr.shape}")
 
-        data = arr[::2, ::2, ::2]
-        data_filtered = data[data < (data.max() / 10)]
-        del data
+        # data = arr[::2, ::2, ::2]
+        # data_filtered = data[data < (data.max() / 10)]
+        # del data
 
-        counts, bins = np.histogram(data_filtered, bins=200)
-        smooth = gaussian_filter1d(counts, 3)
-        valley_idx, _ = find_peaks(-smooth)
+        # counts, bins = np.histogram(data_filtered, bins=200)
+        # smooth = gaussian_filter1d(counts, 3)
+        # valley_idx, _ = find_peaks(-smooth)
         # valley_pos = bins[valley_idx[0]]
         valley_pos = 1
 
