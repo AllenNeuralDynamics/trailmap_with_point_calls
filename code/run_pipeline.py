@@ -225,9 +225,14 @@ def run():
         from aind_zarr_utils import indices_to_ccf_auto_metadata
         
         centroids_level0 = (centroids * 2).astype(int)
-        ccf = indices_to_ccf_auto_metadata({mouse_ID: centroids_level0}, zarr_file)
-        np.save(os.path.join(output_dir, f"points_ccf_{mouse_ID}.npy"), ccf[mouse_ID])
-
+        try:
+            ccf = indices_to_ccf_auto_metadata({mouse_ID: centroids_level0}, zarr_file)
+            np.save(os.path.join(output_dir, f"points_ccf_{mouse_ID}.npy"), ccf[mouse_ID])
+        except Exception as e:
+            error_path = os.path.join(output_dir, f"points_ccf_{mouse_ID}_error.txt")
+            with open(error_path, "w") as f:
+                f.write(f"Error during CCF conversion:\n{str(e)}\n")
+            print(f"Error during CCF conversion for {mouse_ID}: {e}")
         # -------------------------------------------------
         # Done
         # -------------------------------------------------
